@@ -1,7 +1,7 @@
 {
-  "name": "oumimen",
+  "name": "districteuro",
   "version": "0.5.7",
-  "description": "Oumimen",
+  "description": "DistrictEuro",
   "dependencies": {
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
