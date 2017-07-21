@@ -1,0 +1,21 @@
+<div id="unit-attributes">
+  <div class="unit-attributes">
+    <ul ng-repeat="unit in product.units[0].attributes">
+      <li style="margin-top:5%">
+        <span class="att-name">{{unit.attribute_name}}</span>
+        <span class="att-value">{{unit.value}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="infographics-container" ng-repeat="image in product.infographics" style="margin-top:9%">
+    <div class="list card">
+      <div class="item item-image product-image-wrapper">
+        <a>
+          <pre-img ratio="_1_1" exclude-class="true">
+            <img class="product-image" ng-src="{{image.url}}" spinner-on-load style="object-fit: cover;width: 100%;" ng-class="{'last-image':$last}" >
+          </pre-img>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

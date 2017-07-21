@@ -1,0 +1,72 @@
+<ion-view class="food-content-view feed-view fashion-content-view" >
+  <ion-header-bar class="fashion-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content class="checkout-content subtitle-colors">
+    <div class="row address-map-row">
+      <div class="col">
+        <div class="map-wrapper" data-tap-disabled="true">
+          <map center="{{showroom.latitude}},{{showroom.longitude}}" zoom="15" map-type-control="false" street-view-control="false" zoom-control="true" zoom-control-options="{style:'MEDIUM'}">
+            <marker position="{{showroom.latitude}},{{showroom.longitude}}" title="{{ showroom.address }}" visible="true"></marker>
+          </map>
+        </div>
+      </div>
+    </div>
+    <div class="row brief-info-row">
+      {{showroom.address}}, {{showroom.city}}
+    </div>
+    <div class="row brief-info-row showroom-title" style="padding: 0px;">
+      <div ng-if="showroom.has_events">
+        <div class="row subtitle-container green">
+          <div class="col">
+            <h3>{{ 'SHOWROOM_EVENTS' | translate }}</h3>
+          </div>
+        </div>
+        <div class="banner">
+          <div class="with-gradient">
+            <img ng-src="./img/common/wine_tasting2.jpg"/>
+          </div>
+          <div class="text">
+              <h3 >{{ 'WINE_EVENT_NAME' | translate }}</h3>
+              <p>{{ 'WINE_EVENT_DESCRIPTION' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="event-description">
+      <p>{{ 'EVENT_DESCRIPTION' | translate }}</p>
+        <ul>
+          <li>{{ 'EVENT_LI_1' | translate }}</li>
+          <li>{{ 'EVENT_LI_2' | translate }}</li>
+          <li>{{ 'EVENT_LI_3' | translate }}</li>
+          <li>{{ 'EVENT_LI_4' | translate }}</li>
+        </ul>
+    </div>
+    <div ng-if="showroom.has_appointments" class="row subtitle-container yellow">
+      <div class="col">
+        <h3>{{ 'SHOWROOM_APPOINTMENTS' | translate }}</h3>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item ng-if="language!='es-ES' && language!='zh-CN'" ng-repeat="appointment in showroom.appointments" class="appointment-entry">
+          <span>{{appointment.date}}, {{appointment.hour}}</span>
+          <img ng-src="./img/icons/icArrowRightDark.svg"/>
+      </ion-item >
+
+      <ion-item ng-if="language=='es-ES'"ng-repeat="appointment in showroom.appointmentsSpanish" class="appointment-entry">
+          <span>{{appointment.date}}, {{appointment.hour}}</span>
+          <img ng-src="./img/icons/icArrowRightDark.svg"/>
+      </ion-item >
+
+      <ion-item ng-if="language=='zh-CN'" ng-repeat="appointment in showroom.appointmentsChinese" class="appointment-entry">
+          <span>{{appointment.date}}, {{appointment.hour}}</span>
+          <img ng-src="./img/icons/icArrowRightDark.svg"/>
+      </ion-item >
+    </ion-list>
+  </ion-content>
+</ion-view>

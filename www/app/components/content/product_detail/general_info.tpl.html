@@ -1,0 +1,93 @@
+<div id="general_info">
+  <div class="row brief-info-row description-row">
+    <div class="col" style="min-width: 50%;">
+      <p style="float:right; font-size:12px; color: #9b9b9b;line-height: 22px;">
+        {{ 'PRODUCTS_IN_STOCK' | translate }}</p>
+      <p style="font-size:18px; color: #4a4a4a; float:right; margin-right:5px">{{product.stock_quantity}}</p>
+    </div>
+    <div class="col" style="min-width: 50%; padding-left:5%">
+      <p style="font-size:18px; color: #4a4a4a; float:left;">{{product.sold_quantity}}</p>
+      <p style="float:left; font-size:12px; color: #9b9b9b; margin-left:5px;line-height: 22px;">
+        {{ 'PRODUCTS_SOLD' | translate }}</p>
+    </div>
+  </div>
+  <div class="row schedules-and-address-row" ui-sref="main.app.feed.fashion.content.store_detail({storeId: product.store.id})">
+    <div class="col col-20">
+      <div class="row">
+        <pre-img ratio="_3_3" align="left" class="margin:auto">
+          <img class="product-image-container" style="border-radius: 50%;width: 50px;margin-left:5%;height: 50px;left: 1px; z-index: 1;" ng-src="{{product.store.logo.small_url}}" spinner-on-load/>
+        </pre-img>
+      </div>
+    </div>
+    <div class="col col-75" style="margin:auto">
+      <div class="row">
+        <span style="text-align:left; font-size: 18px;font-weight: 300;color: #4a4a4a;" class="image-card-data-title">{{ product.store.name }}</span>
+      </div>
+      <div class="row">
+        <span style="line-height:2;text-align:left; font-size: 14px;font-weight: 300;color: #4a4a4a;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" class="image-card-data-title">{{ product.store.getDescription() }}</span>
+      </div>
+    </div>
+    <div class="col col-10 ion-chevron-right" style="margin:auto"></div>
+  </div>
+  <div ng-class="{'product-properties-container': product.properties.length>0}">
+    <div ng-repeat="prop in product.properties">
+      <div class="row brief-info-row" ng-if="$index%3==0">
+        <div align="center" class="col col-33 product-image-col" ng-if="product.properties[$index]">
+          <div>
+            <pre-img ratio="_3_3" align="center">
+              <img class="product-image-container" style="max-width: 100%; position: relative;" ng-src="{{product.properties[$index].image_url}}" spinner-on-load/>
+            </pre-img>
+          </div>
+          <div>{{product.properties[$index].name}}</div>
+        </div>
+        <div align="center" class="col col-33 product-image-col" ng-if="product.properties[$index + 1]">
+          <div>
+            <pre-img ratio="_3_3" align="center">
+              <img class="product-image-container" style="max-width: 100%; position: relative;" ng-src="{{product.properties[$index + 1].image_url}}" spinner-on-load/>
+            </pre-img>
+          </div>
+          <div>{{product.properties[$index + 1].name}}</div>
+        </div>
+        <div align="center" class="col col-33 product-image-col" ng-if="product.properties[$index + 2]">
+          <div>
+            <pre-img ratio="_3_3" align="center">
+              <img class="product-image-container" style="max-width: 100%; position: relative;" ng-src="{{product.properties[$index + 2].image_url}}" spinner-on-load/>
+            </pre-img>
+          </div>
+          <div>{{product.properties[$index + 2].name}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="review-container">
+    <div class="row brief-info-row description-row review-totals-container">
+      <div class="col">
+        <h5 class="product-store review-total">
+          {{product.amount_reviews}}
+          {{ 'PRODUCTS_REVIEWS' | translate }}
+        </h5>
+      </div>
+      <star-rating class="general-rating" max="5" ng-model="product.mean_qualification" color2="#dcdcdc" color1="#f27474" size="18" padding="3"></star-rating>
+      <span ng-if="product.mean_qualification" class="rating-user" style="margin-left:5px">{{product.mean_qualification}}</span>
+      <span class="rating-total">/5</span>
+    </div>
+    <div>
+      <div ng-repeat="review in product.reviews" class="review-repeater" ng-class="{'no-border':$last}">
+        <div class="row row-center">
+          <div class="col col-reviews">
+            <span ng-if="review.rating" class="rating-user">{{review.rating}}</span>
+            <span class="rating-total">/5</span>
+            <br/>
+            <star-rating max="5" ng-model="review.rating" color2="#dcdcdc" color1="#f27474" size="14" padding="3"></star-rating>
+          </div>
+        </div>
+        <p class="review-username">
+          {{review.user}}
+        </p>
+        <p class="review-comment">
+          {{review.comment}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<ion-view class="fashion-content-view feed-view" >
+  <ion-header-bar class="fashion-content-header feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear" ui-sref="main.app.carts.try-cart()">
+        <img class="logo-image" ng-src="./img/icons/try_on_nop.svg" style="height: 19px;"/>
+        <span class="badge try-cart-badge">{{getProductsInTryCart()}}</span>
+      </button>
+      <button class="button button-clear" ui-sref="main.app.carts()">
+        <img class="logo-image" ng-src="./img/icons/cart_nop.svg"/>
+        <span class="badge cart-badge">{{getProductsInCart()}}</span>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content    has-bouncing="false"
+         start-y="55"
+         has-tabs="true"
+         has-header="true">
+    <ion-slides class="images-slider" slider="data.slider">
+      <ion-slide-page>
+        <pre-img class="box">
+          <img ng-src="{{product.image.landscape_url}}" spinner-on-load/>
+        </pre-img>
+      </ion-slide-page>
+      <ion-slide-page ng-repeat="product_image in product.images">
+        <img class="box" ng-src="{{product_image.landscape_url}}"/>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="product-info">
+      <div class="row">
+        <h2 class="col">{{product.name}}</h2>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <div class="row prices">
+            <span class="current-price">{{product.price_sale | currency:product.price_currency:0}}</span>
+            <span class="old-price">{{product.price_amount | currency:product.price_currency:0}}</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row icons">
+            <div class="col" ng-click="addToTry(product)">
+              <img ng-if="!product.is_in_try_on"ng-src="./img/icons/try_on.svg"/>
+              <img ng-if="product.is_in_try_on" ng-src="./img/icons/try_on_active.svg"/>
+              <p class="icon-text">{{ 'PRODUCTS_TRY' | translate }}</p>
+            </div>
+            <div class="col" ng-click="addToList(product)">
+              <img ng-if="!product.is_in_favorites" ng-src="./img/icons/favorites.svg"/>
+              <img ng-if="product.is_in_favorites" ng-src="./img/icons/favorites_active.svg"/>
+              <p class="icon-text">{{ 'PRODUCTS_ADD_FAVORITES' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row purchase-row">
+      <div class="col" align="center">
+        <button class="add-to-cart-button" ng-click="main_button_action(product)" ng-class="{'active': product.is_in_cart || product.is_pre_orderd }">
+          {{ main_button_label | translate }}
+          <img ng-if="!(product.is_in_cart || product.is_pre_orderd)"  class="logo-image" style="height:20px;margin-left: 5%;" ng-src="./img/icons/cart_nop.svg"/>
+          <img ng-if="(product.is_in_cart || product.is_pre_orderd)" class="logo-image" style="height:20px;margin-left: 5%;" ng-src="./img/icons/cart_added.svg"/>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col" style="text-align:center">
+            <long-description class="product-style" text="{{product.description}}" length="140" show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}"></long-description>
+          </div>
+        </div>
+        <!--    <p class="description-paragraph">{{product.description}}</p>-->
+      </div>
+    </div>
+    <div >
+      <ion-tabs class="tabs-det ">
+        <ion-tab class="tab-left " title="{{ 'GENERAL_PRODUCT_TAB' | translate }}" ui-sref="main.app.feed.fashion.product_detail.general_info">
+          <ion-nav-view name="main.app.feed.fashion.product_detail.general_info">
+            <div ng-include="'views/components/content/product_detail/general_info.tpl.html'"></div>
+          </ion-nav-view>
+        </ion-tab>
+        <ion-tab class="tab-right " title="{{ 'INFOGRAPHICS_TAB' | translate }}" ui-sref="main.app.feed.fashion.product_detail.infographics">
+          <ion-nav-view name="main.app.feed.fashion.product_detail.infogpraphics">
+            <div ng-include="'views/components/content/product_detail/infographics.tpl.html'"></div>
+          </ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+    </div>
+  </ion-content>
+</ion-view>

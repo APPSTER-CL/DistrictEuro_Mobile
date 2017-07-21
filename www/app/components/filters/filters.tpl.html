@@ -1,0 +1,70 @@
+<ion-view class="filters-view" >
+  <ion-header-bar class="filters-header bar-positive" align-title="center">
+    <div class="buttons">
+       <button class="button button-clear cancel-button" ng-click="cancelRefine()">
+         <translate translate="FILTERS_CANCEL"></translate>
+       </button>
+     </div>
+     <h1 class="title">{{ 'FILTERS_TITLE' | translate }}</h1>
+     <div class="buttons">
+       <button class="button button-clear cancel-button" ng-click="applyRefine()">
+         <translate translate="FILTERS_APPLY"></translate>
+        </button>
+     </div>
+  </ion-header-bar>
+  <ion-content class="filters-content-outer">
+    <div class="filter-tabs-slider">
+      <ion-scroll class="filter-tab-section" direction="y" style="margin-top: 10%;">
+        <div class="card list filter-group">
+          <div class="item item-divider">
+            {{ 'FILTERS_CATEGORY' | translate }}
+            <a class="col col-20 button button-clear edit-address-button" style="color: #c1d31b;position: absolute;top: -17px;right: 0px;" ng-click="clear_category()">{{ 'FILTERS_CLEAR' | translate }}</a>
+          </div>
+          <ion-list class="category-filters filter-options-container">
+            <ion-radio name="category_filter" ng-model="category.filter" ng-value="'food'">
+              <i class="fa fa-cutlery" style="font-size: 20px;position: absolute;left: 5%;" aria-hidden="true"></i>
+              <span>{{ 'FILTERS_FOOD' | translate }}</span>
+            </ion-radio>
+            <ion-radio name="category_filter"  ng-model="category.filter" ng-value="'beverages'">
+              <i class="fa fa-beer" style="font-size: 20px;position: absolute;left: 5%;" aria-hidden="true"></i>
+              <span>{{ 'FILTERS_BEVERAGES' | translate }}</span>
+            </ion-radio>
+          </ion-list>
+        </div>
+
+        <div class="card list filter-group">
+          <div class="item item-divider">
+            {{ 'FILTERS_COUNTRY' | translate }}
+            <a class="col col-20 button button-clear edit-address-button" style="color: #c1d31b;position: absolute;top: -17px;right: 0px;" ng-click="clear_country()">{{ 'FILTERS_CLEAR' | translate }}</a>
+          </div>
+          <ion-list class="category-filters filter-options-container">
+            <ion-radio name="country_filter" ng-model="country.filter" ng-value="5">
+              <img class="category-icon real-state-icon" ng-src="./img/filters/France.png"/>
+              <span>{{ 'FILTERS_FRANCE' | translate }}</span>
+            </ion-radio>
+            <ion-radio name="country_filter"  ng-model="country.filter" ng-value="4">
+              <img class="category-icon real-state-icon" ng-src="./img/filters/Italy.png"/>
+              <span>{{ 'FILTERS_ITALY' | translate }}</span>
+            </ion-radio>
+            <ion-radio name="country_filter"  ng-model="country.filter" ng-value="3">
+              <img class="category-icon real-state-icon" ng-src="./img/filters/Spain.png"/>
+              <span>{{ 'FILTERS_SPAIN' | translate }}</span>
+            </ion-radio>
+          </ion-list>
+        </div>
+
+        <div class="card list filter-group range-filter-group">
+          <div class="price-filters">
+            <div class="item item-divider">
+              {{ 'FILTERS_RATE' | translate }}
+            </div>
+            <div class="item range">
+              <star-rating max="5" ng-model="rate.filter" color2="#C9C9C9" color1="#C1D31B" size="30" padding="5"></star-rating>
+            </div>
+          </div>
+        </div>
+
+      </ion-scroll>
+    </div>
+  </ion-content>
+</ion-view>

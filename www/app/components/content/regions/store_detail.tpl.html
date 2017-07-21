@@ -1,0 +1,122 @@
+<ion-view class="food-content-view feed-fashion-view feed-sub-view"  >
+  <ion-header-bar class="food-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content class="subtitle-colors store-content">
+    <page-loader ng-hide="!!store"></page-loader>
+    <div class="store-media" ng-if="!isMap">
+      <img ng-if="hasMap" ng-src="./img/icons/icStoreLocation.svg" aria-hidden="true" ng-class="{'active': isMap}" ng-click="toggleMap()"/>
+      <img ng-src="./img/icons/icStoreLike.svg" aria-hidden="true" ng-class="{'active': storeLiked}" ng-click="toggleLike()"/>
+      <ion-slides class="images-slider" slider="data.slider">
+        <ion-slide-page>
+          <pre-img class="box">
+            <img ng-src="{{store.main_image.landscape_url}}" spinner-on-load/>
+          </pre-img>
+        </ion-slide-page>
+        <ion-slide-page ng-repeat="image in store.images">
+          <img class="box" ng-src="{{image.landscape_url}}">
+        </ion-slide-page>
+        <ion-slide-page ng-repeat="video in store.videos" >
+          <div class="box">
+            <iframe ng-src="{{trustSrc(video + '?modestbranding=1&autohide=1&showinfo=0&controls=0')}}" frameborder="0" allowfullscreen width="100%" height="100%"></iframe>
+          </div>
+        </ion-slide-page>
+      </ion-slides>
+    </div>
+    <div class="store-media row address-map-row" ng-if="isMap">
+      <img ng-if="hasMap" ng-src="./img/icons/icStoreLocation.svg" aria-hidden="true" ng-class="{'active': isMap}"ng-click="toggleMap()"/>
+      <img ng-src="./img/icons/icStoreLike.svg" aria-hidden="true" ng-class="{'active': storeLiked}" ng-click="toggleLike()"/>
+        <div class="col">
+        <div class="map-wrapper" data-tap-disabled="true">
+          <map center="{{store.store_location[0].latitude}},{{store.store_location[0].longitude}}" zoom="15" map-type-control="false" street-view-control="false" zoom-control="true" zoom-control-options="{style:'MEDIUM'}">
+            <marker position="{{store.store_location[0].latitude}},{{store.store_location[0].longitude}}" title="" visible="true"></marker>
+          </map>
+        </div>
+      </div>
+    </div>
+    <div class="store-basic-info">
+      <div class="row row-center">
+        <div class="col col-20">
+          <img class="store-logo" ng-src="{{store.logo.small_url}}"/>
+        </div>
+        <div class="col">
+          <h3>{{store.name}}</h3>
+        </div>
+        <div class="col col-20 chat">
+          <img ng-src="./img/icons/chat.svg" aria-hidden="true"/>
+          <div class="contact-us">{{ 'CONTACT_US' | translate }}</div>
+        </div>
+      </div>
+      <div class="row row-center">
+        <long-description text="{{store.description}}" length="140" show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}"></long-description>
+      </div>
+    </div>
+    <div class="row subtitle-container green">
+      <div class="col">
+        <h3>{{ 'STORE_PRODUCTS' | translate }}</h3>
+      </div>
+    </div>
+    <page-loader ng-show="!products"></page-loader>
+    <div class="row products-row">
+      <div class="col col-33 fashion-product-container product-anchor" ui-sref="main.app.feed.fashion.content({productId: product.id})"
+       ng-repeat="product in products.results" >
+        <div class="list card">
+          <div class="item item-image product-image-wrapper">
+            <a>
+              <pre-img ratio="_3_4">
+                <img class="product-image" ng-src="{{product.image.portrait_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+              </pre-img>
+            </a>
+          </div>
+          <div class="item item-body product-description-wrapper">
+            <h5 align="left" class="product-title" >
+              <a class="product-title">
+                {{product.name}}
+              </a>
+            </h5>
+            <div align="left" class="product-description">
+              <span>{{product.description}}</span>
+              <div ng-show="product.price_sale && product.price_sale != 0">
+                <span align="left" class="actual-price">
+                  {{product.price_sale | currency:product.price_currency:0}}
+                </span>
+                <span class="previous-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+              <div ng-show="!product.price_sale || product.price_sale == 0">
+                <span align="left" class="actual-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if="store.extra_information">
+      <div class="row subtitle-container yellow">
+        <div class="col">
+          <h3>{{ 'STORE_MORE_INFORMATION' | translate }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <long-description text="{{store.extra_information}}"></long-description>
+        </div>
+      </div>
+      <div class="row store-extra-info" ng-repeat="image in store.information_images">
+        <div class="col">
+          <pre-img ratio="_1_1" exclude-class="true">
+            <img class="product-image" ng-src="{{image.url}}" spinner-on-load style="object-fit: cover;width: 100%;" ng-class="{'last-image':$last}" >
+          </pre-img>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

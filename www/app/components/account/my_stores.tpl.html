@@ -1,0 +1,29 @@
+<ion-view class="feed-travel-view feed-sub-view feed-view" >
+  <ion-header-bar class="feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <h1 class="title">{{ 'FAVORITESTORES_TITLE' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="products-row">
+      <div class="travel-product-container" ng-repeat="store in stores">
+        <div class="row image-row" class="product-anchor" ui-sref="main.app.feed.travel.content.store_detail({storeId: store.id})">
+          <div class="col product-image-container">
+            <div multi-bg="[store.logo.landscape_url]" interval="5000">
+              <div class="row row-center content-inside-image">
+                <div class="col">
+                  <img class="travel-product-icon" ng-src="{{store.icon}}"/>
+                  <h2 class="product-name">
+                    <!--<a class="product-anchor"></a>-->
+                    <a class="product-anchor" ui-sref="main.app.feed.travel.content.store_detail({storeId: store.id})">{{store.name}}</a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

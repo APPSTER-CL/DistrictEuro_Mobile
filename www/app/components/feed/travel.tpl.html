@@ -1,0 +1,23 @@
+<ion-view class="feed-travel-view feed-sub-view" >
+  <ion-content>
+    <page-loader ng-hide="!!countries.results"></page-loader>
+    <div class="products-row">
+      <div class="travel-product-container" ng-repeat="country in countries.results ">
+        <div class="row image-row" class="product-anchor"  ui-sref="main.app.feed.travel.content({productId: country.id})">
+          <div class="col product-image-container country-list-row">
+            <div multi-bg="[country.image.landscape_url]" interval="5000">
+              <div class="row row-center content-inside-image">
+                <div class="col">
+                  <img class="travel-product-icon" ng-src="{{country.icon}}"/>
+                  <h2 class="product-name">
+                     <a class="product-anchor"  ui-sref="main.app.feed.travel.content({productId: country.id})">{{country.name}}</a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

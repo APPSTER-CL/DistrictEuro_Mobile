@@ -1,0 +1,36 @@
+
+<ion-view class="account-profile-view account-sub-view feed-view">
+  <ion-header-bar class="feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <h1 class="title">{{ 'POINTS_TITLE' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="points-header">
+      <div class="row">
+        <div class="col">
+          <img ng-src="./img/icons/ticket.svg"/>
+          <span class="points">{{points.total_points}}</span>
+        </div>
+      </div>
+      <span class="subtext">{{ 'POINTS_ACCUMULATED' | translate }}</span>
+      <button class="button redeem-button">{{ 'REDEEM_POINTS' | translate }}</button>
+    </div>
+    <div class="row address-row" style="border-bottom: solid 1px #C1D31B" ng-repeat="action in points.actions">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block choose-addresses-button bb">
+            <div style="position: absolute;left: 4%;">
+              <b style="font-size: 15px">{{action.items}}{{'ITEMS_PURCHASED'|translate}}</b>
+            </div>
+            <div style="font-size: 12px;position: absolute;right: 11%;line-height: 20px;">
+              <b style="font-size:20px">{{action.points}}</b>
+              <br> {{ 'POINTS_POINTS' | translate }}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

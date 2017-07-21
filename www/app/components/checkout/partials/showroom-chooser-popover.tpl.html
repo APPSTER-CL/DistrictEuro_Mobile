@@ -1,0 +1,19 @@
+<ion-popover-view class="address-chooser-popover" ng-init="total_items = user_shipping_addresses.results.length" ng-class="{'contains-{{ total_items }}-items' : true, 'contains-more-than-6-items' : (total_items > 5)}">
+  <ion-content has-bouncing="false">
+    <ion-scroll class="addresses-scroller" direction="y">
+      <div class="list addresses-list">
+        <div class="address-item row row-center" ng-repeat="showroom in user_shipping_addresses.results" style="width:100%">
+          <label class="col item item-radio">
+                <input type="radio" name="pick_address" ng-model="data.selected_address" ng-value="showroom.address" ng-change="selectShowroom()">
+                <div class="radio-content" style="width:100%">
+                    <div class="item-content disable-pointer-events">
+                        <span class="address-name">{{showroom.name}} {{showroom.address}}</span>
+                    </div>
+                    <i class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+                </div>
+            </label>
+          </div>
+      </div>
+    </ion-scroll>
+  </ion-content>
+</ion-popover-view>

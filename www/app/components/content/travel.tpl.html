@@ -1,0 +1,163 @@
+<ion-view class="fashion-content-view feed-fashion-view" >
+  <ion-header-bar class="fashion-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content class="subtitle-colors">
+    <ion-slides class="images-slider" slider="data.slider">
+      <ion-slide-page>
+        <pre-img class="box">
+          <img ng-src="{{country.image.landscape_url}}" spinner-on-load/>
+        </pre-img>
+      </ion-slide-page>
+      <ion-slide-page ng-repeat="product_image in country.images">
+        <img class="box" ng-src="{{product_image.landscape_url}}"/>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="row country-basic-info">
+      <div class="col">
+        <h2>{{country.name}}</h2>
+        <long-description class="product-style" text="{{country.description}}" length="140" show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}" fix-length="{{!page_loaded}}"></long-description>
+      </div>
+    </div>
+    <div ng-if="regions.results && regions.count > 0" class="row subtitle-container green">
+      <div class="col">
+        <h3>{{ 'COUNTRY_REGIONS' | translate }}</h3>
+      </div>
+    </div>
+    <div class="feed-travel-view">
+      <div class=" travel-product-container">
+        <div class="row">
+          <div class="col col-50 region-box" ng-repeat="region in regions.results" ui-sref="main.app.feed.travel.content.regions({regionId: region.id})">
+            <div class="item item-image product-image-wrapper">
+              <pre-img ratio="_3_2" class="with-gradient">
+                <img class="product-image" ng-src="{{region.image.small_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+              </pre-img>
+              <div class="store-count">
+                {{ region.number_of_stores }}
+                <span ng-if="region.number_of_stores==1">
+                  {{ 'STORE_SINGULAR' | translate }}</span>
+                <span ng-if="region.number_of_stores>1">
+                  {{ 'STORE_PLURAL' | translate }}</span>
+              </div>
+              <div class="region-name">
+                {{ region.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if="classic_products && classic_products.length > 0" class="row subtitle-container yellow">
+      <div class="col">
+        <h3>{{ 'COUNTRY_PRODUCTS' | translate }}</h3>
+      </div>
+    </div>
+    <div class="row products-row">
+      <div class="col col-33 fashion-product-container product-anchor" ui-sref="main.app.feed.fashion.content({productId: product.id})" ng-repeat="product in classic_products">
+        <div class="list card">
+          <div class="item item-image product-image-wrapper">
+            <a>
+              <pre-img ratio="_3_4">
+                <img class="product-image" ng-src="{{product.image.portrait_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+              </pre-img>
+            </a>
+          </div>
+          <div class="item item-body product-description-wrapper">
+            <h5 align="left" class="product-title">
+              <a class="product-title">
+                {{product.name}}
+              </a>
+            </h5>
+            <div align="left" class="product-description">
+              <span>{{product.description}}</span>
+              <div ng-show="product.price_sale && product.price_sale != 0">
+                <span align="left" class="actual-price">
+                  {{product.price_sale | currency:product.price_currency:0}}
+                </span>
+                <span class="previous-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+              <div ng-show="!product.price_sale || product.price_sale == 0">
+                <span align="left" class="actual-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-if="popular_stores.results && popular_stores.count > 0" class="row subtitle-container green" style="margin-bottom:10px;">
+      <div class="col">
+        <h3>{{ 'COUNTRY_POPULAR_VENDORS' | translate }}</h3>
+      </div>
+    </div>
+    <div class="row schedules-and-address-row" ng-repeat="store in popular_stores.results" ui-sref="main.app.feed.travel.content.store_detail({storeId: store.id})">
+      <div class="col col-20">
+        <div class="row">
+          <pre-img ratio="_3_3" align="left" class="margin:auto">
+            <img class="product-image-container" style="border-radius: 50%;width: 40px;height: 40px; max-width: 100%; position: relative; margin-top:5px;" ng-src="{{store.logo.small_url}}" spinner-on-load/>
+          </pre-img>
+        </div>
+      </div>
+      <div class="col col-75" style="margin:auto">
+        <div class="row">
+          <span style="text-align:left; font-size: 18px;font-weight: 300;color: #4a4a4a;" class="image-card-data-title">{{ store.name }}</span>
+        </div>
+        <div class="row ">
+          <span style="line-height:2;text-align:left; font-size: 14px;font-weight: 300;color: #4a4a4a;" class="image-card-data-title text-overflow-container">{{ store.getDescription() }}</span>
+        </div>
+      </div>
+      <div class="col col-10 ion-chevron-right" style="margin:auto"></div>
+    </div>
+    <div ng-if="classic_products.results && classic_products.count > 0" class="row brief-info-row" style="margin-top:7%;adding:5px 18px; background-color: #e9e9e9; color:#4a4a4a; font-weight: 300; letter-spacing: -0.1px;">
+      <div class="col">
+        <h3 class="product-name" style="color:#4A4A4A">{{ 'COUNTRY_BEST_SELLERS' | translate }}</h3>
+      </div>
+    </div>
+    <div class="row products-row" tyle=" margin-top:5%;">
+      <div class="col col-50 fashion-product-container" ng-repeat="product in classic_products.results">
+        <div class="list card">
+          <div class="item item-image product-image-wrapper">
+            <a class="product-anchor" ui-sref="main.app.feed.fashion.content({productId: product.id})">
+              <pre-img ratio="_3_4">
+                <img class="product-image" ng-src="{{ product.image.portrait_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+              </pre-img>
+            </a>
+          </div>
+          <div class="item item-body product-description-wrapper">
+            <h5 align="left" class="product-title">
+              <a class="product-anchor" style="font-size: 13px;letter-spacing: -0.1px;color: #4a4a4a;" ui-sref="main.app.feed.fashion.content({productId: product.id})">
+                {{product.name}}
+              </a>
+            </h5>
+            <h5 align="left" class="product-title">
+              <a class="product-anchor" style="f    width: 154px;    height: 15px;font-size: 12px;color: #9b9b9b;">
+                {{product.description}}
+              </a>
+            </h5>
+            <div ng-show="product.price_sale && product.price_sale != 0">
+              <h2 align="left" style=" font-size: 13px;letter-spacing: -0.1px;color: #c1d31b; margin:0px">
+                {{ product.price_currency  }}
+                {{product.price_sale}}</h2>
+              <span class="previous-price" style="text-decoration: line-through; font-size: 10px;position: absolute; top: 61%; right: 7px;">
+                {{product.price_currency}}
+                {{product.price_amount}}</span>
+            </div>
+            <div ng-show="!product.price_sale || product.price_sale == 0">
+              <h2 align="left" style="font-size: 13px;letter-spacing: -0.1px;color: #c1d31b; margin:0px">
+                {{ product.price_currency  }}
+                {{product.price_amount}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

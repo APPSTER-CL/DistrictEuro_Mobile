@@ -1,0 +1,44 @@
+<ion-view class="feed-view">
+  <ion-header-bar class="feed-header">
+    <div class="logo-container" ng-hide="searchActive && searchEnable">
+     <img ng-src="./img/icons/logo.png"/>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear" ui-sref="main.app.carts.try-cart()">
+        <span class="badge try-cart-badge">{{getProductsInTryCart()}}</span>
+        <img class="logo-image" ng-src="./img/icons/try_on_nop.svg" style="height: 19px;"/>
+      </button>
+      <button class="button button-clear" ui-sref="main.app.carts()">
+        <img class="logo-image" ng-src="./img/icons/cart_nop.svg"/>
+        <span class="badge cart-badge">{{getProductsInCart()}}</span>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row country-basic-info">
+      <div class="col">
+        <h2>{{'SHOWROOMS_TITLE' | translate }}</h2>
+        <long-description show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}" text="{{ 'SHOWROOM_DESCRIPTION' | translate }}">
+        </long-description>
+      </div>
+    </div>
+    <div ng-repeat="showroom in showrooms.results" ui-sref="main.app.showrooms.showroom-details({showroomId: showroom.id})">
+      <div class="image-card">
+        <pre-img ratio="_3_3" class="store-images with-gradient">
+          <img style="object-fit: cover;height: 100%;width: 100%; padding:0px" ng-src="{{showroom.image.url}}" spinner-on-load/>
+        </pre-img>
+        <div class="image-card-data">
+          <div class="row row-center">
+            <div class="col">
+              <span class="image-card-data-title">{{ showroom.name }}</span>
+              <p class="image-card-data-description">{{showroom.address}}, {{showroom.city}}, {{showroom.country}}</p>
+            </div>
+            <img class="col col-right col-10" ng-src="./img/icons/icAlert.svg"/>
+            <img ng-if="showroom.has_appointments" class="col col-right col-10" ng-src="./img/icons/icCalendar.svg"/>
+            <img class="col col-right col-10" ng-src="./img/icons/icArrowRight.svg" style="height: 32px;"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

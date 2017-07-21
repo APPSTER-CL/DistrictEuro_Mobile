@@ -1,0 +1,48 @@
+<ion-view class="account-profile-view account-sub-view feed-view"  id="my-appointments" cache-view="false">
+  <ion-header-bar class="feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <h1 class="title">{{ 'APPOINTMENTS_TITLE' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row row-center empty-appointment-row" ng-if="appointments.length == 0">
+      <div class="col">
+        <h3 class="no-products-title">{{ 'CARTS_EMPTY' | translate }}</h3>
+        <div class="illustration-container">
+          <img class="illustration-image" ng-src="./img/icons/appointments_empty.svg"/>
+        </div>
+      </div>
+    </div>
+    <div class="orders-row">
+      <div class="card order-item" ng-repeat="appointment in appointments">
+        <div class="item item-divider order-header">
+          <span class="header-title" style="margin-right: -8%;">{{appointment.date | amDateFormat:'DD MMM, YYYY'}}
+            {{appointment.time | amDateFormat:'HH:mm'}}</span>
+          <span ui-sref="main.app.showrooms.showroom-details({showroomId: 4  })" ng-show="appointment.showroom.length > 17"style="margin-left:13%; margin-right: 7%; font-size=14px; line-height:0px;">{{ appointment.showroom | limitTo:13 }}...</span>
+          <span ui-sref="main.app.showrooms.showroom-details({showroomId: 3 })" ng-show="appointment.showroom.length <= 17"style="margin-left:13%; margin-right: 7%; font-size=14px; line-height:0px;">{{ appointment.showroom | limitTo:13 }}</span>
+          <span ng-click="deleteAppointment(appointment)"style="position:absolute;top:2px;right:3px" >
+            <img  ng-src="./img/icons/delete-1.svg"/>
+          </span>
+
+        </div>
+        <div class="item item-text-wrap order-content">
+          <div class="row order-product" ng-repeat="product in appointment.products track by $index">
+            <div class="col col-20 product-image-col">
+              <pre-img ratio="_1_1">
+                <img class="product-image-container" style="max-width: 100%;" ng-src="{{product.image.portrait_url}}" spinner-on-load/>
+              </pre-img>
+            </div>
+            <div class="col col-center name-col">
+              <span class="product-name">{{product.name}}</span>
+            </div>
+            <div class="col col-center">
+              <span class="product-price">{{product.price_currency}}
+                {{product.price_amount}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

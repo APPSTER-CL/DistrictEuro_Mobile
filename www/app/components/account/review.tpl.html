@@ -1,0 +1,50 @@
+<ion-view class="fashion-content-view feed-view">
+  <ion-header-bar class="fashion-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-slides class="images-slider" slider="data.slider">
+      <ion-slide-page>
+        <pre-img class="box">
+          <img ng-src="{{product.image.landscape_url}}" spinner-on-load/>
+        </pre-img>
+      </ion-slide-page>
+      <ion-slide-page ng-repeat="product_image in product.images">
+        <img class="box" ng-src="{{product_image.landscape_url}}"/>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="product-info">
+      <div class="row">
+        <h2 class="col">{{product.name}}</h2>
+      </div>
+      <long-description text="{{product.description}}" show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}"></long-description>
+      <br>
+    </div>
+    <div class="row schedules-and-address-row">
+      <form id="reviewForm" name="reviewForm" style="width:100%;" role="form" ng-submit="save_review()" novalidate>
+          <div class="textareaContainer">
+            <div>
+              <div style="margin-bottom:10px">
+                <label>{{ 'REVIEW_RATING' | translate }}</label>
+              </div>
+              <star-rating max="5" ng-model="productReview.score" color2="#C9C9C9" color1="#ea6069" size="30" padding="5"></star-rating>
+            </div>
+            <div style="margin-top:20px">
+              <div style="margin-bottom:10px">
+                <label>{{ 'REVIEW_COMMENTS' | translate }}</label>
+              </div>
+              <textarea placeholder="{{ 'REVIEW_WRITECOMMENTS' | translate }}" ng-model="productReview.comment" maxlength="256" max-rows="6" rows="4" draggable="false" select-on-focus required></textarea>
+            </div>
+          </div>
+          <div class="confirm-button-container">
+            <button type="submit" class="confirm-button" ng-disabled="reviewForm.$invalid">{{ 'REVIEW_SENDBUTTON' | translate }}</button>
+          </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,111 @@
+<ion-view class="feed-fashion-view feed-sub-view" >
+  <ion-content on-infinite-scroll="loadMoreProducts()" class="subtitle-colors">
+    <div ng-hide="(searchActive)" class="banner" ui-sref="main.app.showroom-promotions({showroomId: 3})">
+      <div class="with-gradient banner">
+        <img ng-src="./img/common/wine_tasting2.jpg"/>
+      </div>
+      <div class="text">
+        <h3 >{{ 'WINE_EVENT_NAME' | translate }}</h3>
+        <p>{{ 'WINE_EVENT_DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+    <div ng-hide="searchActive">
+      <div class="row subtitle-container green">
+        <div class="col">
+          <h3>{{ 'BEST_SELLERS' | translate }}</h3>
+        </div>
+      </div>
+      <page-loader ng-hide="!!best_sellers"></page-loader>
+      <div class="row products-row">
+        <div class="col col-33 fashion-product-container product-anchor" ui-sref="main.app.feed.fashion.content({productId: product.id})"
+         ng-repeat="product in best_sellers" >
+          <div class="list card">
+            <div class="item item-image product-image-wrapper">
+              <a>
+                <pre-img ratio="_3_4">
+                  <img class="product-image" ng-src="{{product.image.portrait_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+                </pre-img>
+              </a>
+            </div>
+            <div class="item item-body product-description-wrapper">
+              <h5 align="left" class="product-title" >
+                <a class="product-title">
+                  {{product.name}}
+                </a>
+              </h5>
+              <div align="left" class="product-description">
+                <span>{{product.description}}</span>
+                <div ng-show="product.price_sale && product.price_sale != 0">
+                  <span align="left" class="actual-price">
+                    {{product.price_sale | currency:product.price_currency:0}}
+                  </span>
+                  <span class="previous-price">
+                    {{product.price_amount | currency:product.price_currency:0}}
+                  </span>
+                </div>
+                <div ng-show="!product.price_sale || product.price_sale == 0">
+                  <span align="left" class="actual-price">
+                    {{product.price_amount | currency:product.price_currency:0}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-hide="(searchActive || !products.length)" class="banner waves-effect waves-teal" ui-sref="main.app.feed.fashion.content({productId: 19})">
+      <div class="with-gradient banner">
+        <img ng-src="./img/common/getting-started.png"/>
+      </div>
+      <div class="text">
+          <h3 >{{ 'PROMOTION_NAME' | translate }}</h3>
+          <p>{{ 'PROMOTION_DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+    <div class="row subtitle-container yellow" ng-hide="(searchActive || !products.length)">
+      <div class="col">
+        <h3>{{ 'NEW_ARRIVALS' | translate }}</h3>
+      </div>
+    </div>
+    <page-loader ng-show="searching"></page-loader>
+    <div class="row products-row">
+      <div class="col col-33 fashion-product-container product-anchor" ui-sref="main.app.feed.fashion.content({productId: product.id})"
+       ng-repeat="product in products" >
+        <div class="list card">
+          <div class="item item-image product-image-wrapper">
+            <a>
+              <pre-img ratio="_3_4">
+                <img class="product-image" ng-src="{{product.image.portrait_url}}" spinner-on-load style="object-fit: cover;height: 100%;width: 100%;">
+              </pre-img>
+            </a>
+          </div>
+          <div class="item item-body product-description-wrapper">
+            <h5 align="left" class="product-title" >
+              <a class="product-title">
+                {{product.name}}
+              </a>
+            </h5>
+            <div align="left" class="product-description">
+              <span>{{product.description}}</span>
+              <div ng-show="product.price_sale && product.price_sale != 0">
+                <span align="left" class="actual-price">
+                  {{product.price_sale | currency:product.price_currency:0}}
+                </span>
+                <span class="previous-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+              <div ng-show="!product.price_sale || product.price_sale == 0">
+                <span align="left" class="actual-price">
+                  {{product.price_amount | currency:product.price_currency:0}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll on-infinite="loadMoreProducts()" distance="1%"></ion-infinite-scroll>
+    </div>
+  </ion-content>
+</ion-view>

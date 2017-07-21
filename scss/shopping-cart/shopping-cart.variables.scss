@@ -1,0 +1,27 @@
+$shopping-cart-header-bg: #9B9B9B;
+$shopping-cart-header-color: #FFF;
+
+$shopping-bill-color: #9B9B9B;
+$shopping-bill-border: #C9C9C9;
+$shopping-bill-bg: #FFF;
+
+$shopping-empty-cart-color: #9B9B9B;
+
+$shopping-cart-divider-color: #FFF;
+$shopping-cart-divider-bg: #F3F3F3;
+$shopping-cart-divider-height: 35px;
+
+$shopping-cart-products-bg: #C9C9C9;
+$disabled-button: #C9C9C9;
+$enabled-button: #c2d61e;
+
+$shopping-cart-product-bg: #FFF;
+$shopping-cart-product-pre-img-bg: rgba(darken(#FFF, 10), .25);
+$shopping-cart-product-color: #9B9B9B;
+$shopping-cart-product-quantity-color: #4A4A4A;
+$shopping-cart-product-footer-bg: #F8F8F8;
+
+$shopping-cart-empty-illustration-ratio: 34 25;
+$bottom-button-height: 44px;
+
+$pre-img-ratios: append($pre-img-ratios, $shopping-cart-empty-illustration-ratio);

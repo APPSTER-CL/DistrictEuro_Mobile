@@ -1,0 +1,76 @@
+<ion-view class="checkout-address-view" >
+  <ion-header-bar class="checkout-address-header">
+    <div class="buttons">
+      <button class="button button-clear cancel-button" ng-click="cancel()">{{ 'CHECKOUT_CANCEL' | translate }}</button>
+    </div>
+    <h1 class="title">{{ 'SHIPPING_ADDRESS_TITLE' | translate }} </h1>
+  </ion-header-bar>
+  <ion-content class="checkout-address-content" has-bouncing="false">
+    <div class="row everything-else-row">
+      <div class="col">
+        <div ng-if="user_shipping_addresses.length == 0">
+          <div class="new-address-button-outer">
+            <button class="button button-block new-address-button" ng-click="showNewAddressPopup()">
+              {{ 'SHIPPING_ADDRESS_NEW' | translate }} CACA
+            </button>
+          </div>
+        </div>
+        <div ng-if="user_shipping_addresses.length > 0">
+          <h3 class="shipping-address-title">{{  'APPOINTMENT_SHOWROOM_TEXT' | translate }}</h3>
+          <div class="address-chooser" ng-click="openAddressesPopover($event)">
+            <button class="button button-block icon-right addresses-popover-button" ng-class="{'ion-chevron-up': addresses_popover.isShown(), 'ion-chevron-down' : !addresses_popover.isShown()}">
+              {{data.selected_address.street || 'Select address'}}
+            </button>
+          </div>
+          <ion-list class="billing-same-as-shipping-option">
+            <ion-checkbox ng-model="billing_same_as_shipping_address">{{ 'SHIPPING_ADDRESS_BILLING' | translate }}</ion-checkbox>
+          </ion-list>
+        </div>
+
+        <div class="address-details-container" ng-show="data.selected_address.street">
+          <div class="row">
+            <label class="col item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_NAME' | translate }}</span>
+              <p class="input-data">{{data.selected_address.full_name}}</p>
+            </label>
+          </div>
+          <div class="row">
+            <label class="col col-50 item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_ADDRESS' | translate }}</span>
+              <p class="input-data">{{data.selected_address.street}}</p>
+            </label>
+            <label class="col col-50 item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_APT' | translate }}</span>
+              <p class="input-data">{{data.selected_address.apt_suite}}</p>
+            </label>
+          </div>
+          <div class="row">
+            <label class="col col-50 item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_CITY' | translate }}</span>
+              <p class="input-data">{{data.selected_address.city}}</p>
+            </label>
+            <label class="col col-25 item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_STATE' | translate }}</span>
+              <p class="input-data">{{data.selected_address.state}}</p>
+            </label>
+            <label class="col col-25 item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_ZIP' | translate }}</span>
+              <p class="input-data">{{data.selected_address.postal_code}}</p>
+            </label>
+          </div>
+          <div class="row">
+            <label class="col item item-input item-stacked-label">
+              <span class="input-label">{{ 'SHIPPING_ADDRESS_PHONE' | translate }}</span>
+              <p class="input-data">{{data.selected_address.phone}}</p>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row actions-row">
+      <div class="col">
+        <a class="button button-full action-button" ng-click="saveSelectedAddress(data.selected_address)">{{ 'SHIPPING_ADDRESS_SAVE' | translate }}</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

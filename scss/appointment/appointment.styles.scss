@@ -1,0 +1,26 @@
+#my-appointments {
+  .empty-appointment-row {
+    height: 100%;
+    text-align: center;
+    &.row {
+      padding: 0;
+      .col {
+        padding: 0;
+      }
+    }
+    .no-products-title {
+      font-weight: 300;
+      color: $shopping-empty-cart-color;
+      margin: 0 0 55px;
+    }
+    .illustration-container {
+      margin: 0 20%;
+      .pre-img {
+        background-color: rgba($shopping-cart-products-bg, 0);
+      }
+      .illustration-image {
+        width: 70%;
+      }
+    }
+  }
+}

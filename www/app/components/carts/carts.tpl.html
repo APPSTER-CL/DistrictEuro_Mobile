@@ -1,0 +1,21 @@
+<ion-view class="feed-view" cache-view="false">
+  <ion-header-bar class="feed-header">
+    <div class="buttons" style="right: inherit; left: 5px;">
+      <button class="button button-clear close-button" style="color:#ffffff; left:0" ng-click="close()">{{ 'CARTS_CLOSE' | translate }}</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="shopping-cart-content district-cart-top-nav" has-bouncing="false" delegate-handle="feeds-content">
+    <ion-tabs class="tabs-top tabs" style="border: none; background: none; width:94%;margin-left: 3%;">
+      <ion-tab title="{{ 'CARTS_TAB_BUY' | translate }}" ui-sref="main.app.carts.shopping-cart">
+        <ion-nav-view name="main.app.carts.shopping-cart"></ion-nav-view>
+      </ion-tab>
+      <ion-tab title="{{ 'CARTS_TAB_TRY' | translate }}" ui-sref="main.app.carts.try-cart">
+        <ion-nav-view name="main.app.carts.try-cart"></ion-nav-view>
+      </ion-tab>
+      <ion-tab title="{{ 'CARTS_TAB_FAVORITES' | translate }}" ui-sref="main.app.carts.favorites">
+        <ion-nav-view name="main.app.carts.favorites"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+    <ion-nav-view name="cart-type" class="category-feed"></ion-nav-view>
+  </ion-content>
+</ion-view>

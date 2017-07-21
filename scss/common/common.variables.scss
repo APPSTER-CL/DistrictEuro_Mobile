@@ -1,0 +1,27 @@
+// Images - Preload images
+$pre-img-bg: rgba(darken(#FFF, 10), .25);
+
+// Images - Preload images - Spinner on load
+$spinner-size: 50px;
+$spinner-svg-size: 28px;
+$spinner-color: #9B9B9B;
+
+// Images - Multimedia background
+$multi-bg: #9B9B9B;
+$overlay-bg: #000;
+
+$loading-color: #FFF;
+$loading-background-color: #9B9B9B;
+
+$pre-img-ratios: ();
+
+// Tabbed Navigation
+$navigation-tabs-active-bg: rgba(255, 255, 255, .34);
+$navigation-tabs-active-icon: #C1D31B;
+$navigation-tabs-bg: rgba(255, 255, 255, .88);
+$navigation-tabs-border: transparent;
+$navigation-tabs-text: #4A4A4A;
+
+// Progress-bar
+$progress-bar-bg: rgba(darken(#FFF, 10), .25);
+$progress-bar-value-bg: darken($progress-bar-bg, 20%);

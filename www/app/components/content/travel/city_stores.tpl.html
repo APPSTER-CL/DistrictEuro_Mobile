@@ -1,0 +1,19 @@
+<ion-view class="fashion-content-view feed-fashion-view" >
+  <ion-header-bar class="fashion-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-slide-box class="product-images-slider">
+      <div class="image-container">
+        <pre-img ratio="full">
+          <img class="product-image" ng-src="{{product.picture}}" spinner-on-load/>
+        </pre-img>
+      </div>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

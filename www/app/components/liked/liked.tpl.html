@@ -1,0 +1,36 @@
+<ion-view class="feed-view" >
+  <ion-header-bar class="feed-header">
+    <div class="logo-container">
+    <!--  <img class="logo-image" ng-src="./img/feed/logo.png"/>-->
+      <h4 style="color:#4a4a4a">{{ 'APP_MAIN_TITLE' | translate }} </h4>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear cart-button" ui-sref="main.app.shopping-cart()">
+        <span class="badge try-cart-badge">{{getProductsInTryCart()}}</span>
+        <span class="badge cart-badge">{{getProductsInCart()}}</span>
+        <img class="cart-image" ng-src="./img/feed/cart-icon.png"/>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <button class="button button-block button-positive" ui-sref="main.app.liked.new-list()">
+      Start a new list
+    </button>
+    <div class="item item-divider">
+      APRIL
+    </div>
+    <div class="card" ng-repeat="list in lists">
+      <div class="item item-text-wrap">
+        <p>Name: {{list.name}}</p>
+        <p>Category: {{list.category}}</p>
+        <p>Tags: {{list.tags}}</p>
+        <p>Creation Date: {{list.creation_date}}</p>
+        Products:
+        <span ng-repeat="product in list.products">
+          {{product.id}}
+        </span>
+        <div><a ui-sref="main.app.liked.list-details({listId: list.id})">Go to list details page</a></div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

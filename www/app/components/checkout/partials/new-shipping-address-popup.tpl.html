@@ -1,0 +1,39 @@
+<div class="address-details-container">
+  <i class="ion-ios-close-outline popupclose" ng-click="closeShippingAddressPopup()"></i>
+  <div class="row">
+    <label class="col item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_NAME' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.full_name" placeholder="Required">
+    </label>
+  </div>
+  <div class="row">
+    <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_ADDRESS' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.street" placeholder="Street">
+    </label>
+    <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_APT' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.apt_suite" placeholder="Optional">
+    </label>
+  </div>
+  <div class="row">
+    <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_CITY' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.city" placeholder="Houston">
+    </label>
+    <label class="col col-25 item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_STATE' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.state" placeholder="AK">
+    </label>
+    <label class="col col-25 item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_ZIP' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.postal_code" placeholder="11000">
+    </label>
+  </div>
+  <div class="row">
+    <label class="col item item-input item-stacked-label">
+      <span class="input-label">{{ 'SHIPPING_ADDRESS_PHONE' | translate }}</span>
+      <input class="input-data" type="text" ng-model="address.phone" placeholder="+123 55 66 77">
+    </label>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<ion-view class="shopping-cart-view" cache-view="false">
+  <ion-content class="shopping-cart-content subtitle-colors" has-bouncing="false">
+    <div class="row row-center empty-cart-row" ng-if="products.length == 0">
+      <div class="col">
+        <h3 class="no-products-title">{{ 'CARTS_EMPTY' | translate }}</h3>
+        <div class="illustration-container">
+          <pre-img ratio="_34_25">
+            <img class="illustration-image" ng-src="./img/icons/cart-empty.png" spinner-on-load/>
+          </pre-img>
+        </div>
+      </div>
+    </div>
+    <div ng-if="products.length > 0">
+      <ul class="list shopping-bill">
+        <li class="item">
+          <div class="row">
+            <div class="col">
+              <span class="bill-item-title">{{ 'CARTS_PRICE_SUB' | translate }}</span>
+            </div>
+            <div class="col">
+              <span class="bill-item-value">{{ products[0].price_currency }} {{ getSubtotal() | number:2 }}</span>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="row">
+            <div class="col">
+              <span class="bill-item-title">{{ 'CARTS_ESTIMATED_TAXES' | translate }}</span>
+            </div>
+            <div class="col">
+              <span class="bill-item-value">{{ products[0].price_currency }} {{ getTax() | number:2 }}</span>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="row">
+            <div class="col">
+              <span class="bill-item-title">{{ 'CARTS_SHIPPING' | translate }}</span>
+            </div>
+            <div class="col">
+              <span class="bill-item-value">{{ 'FREE' | translate }}</span>
+            </div>
+          </div>
+        </li>
+        <li class="item bill-total">
+          <div class="row">
+            <div class="col">
+              <span class="bill-item-title">{{ 'CARTS_PRICE_TOTAL' | translate }}</span>
+            </div>
+            <div class="col">
+              <span class="bill-item-value" style="color: #c2d61e;">{{ products[0].price_currency }} {{ getTotal() | number:2 }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="row subtitle-container grey">
+        <div class="col">
+          <h3>{{ products.length }} {{ products.length === 1 ? 'item' : 'items' }} {{ 'CARTS_INCART' | translate }}</h3>
+        </div>
+      </div>
+      <div class="products-in-cart-row">
+        <div class="card product-in-cart" ng-repeat="product in products">
+          <div class="item item-divider product-header">
+            <div class="row">
+              <div class="col col-center">
+                <span class="product-name">{{product.name}}</span>
+              </div>
+              <div class="col col-center">
+                <button class="button button-icon icon ion-close-round remove-button" ng-click="removeFromCart(product)"></button>
+              </div>
+            </div>
+          </div>
+          <div class="item item-text-wrap product-content">
+            <div class="row">
+              <div class="col col-33 product-image-col">
+                <div class="product-image-container" multi-bg="[product.image.small_url]"></div>
+              </div>
+              <div class="col col-center product-description-col">
+                <span class="description-line">
+                  {{ 'CARTS_DESC' | translate }}:
+                  <long-description show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}" length="65" text="{{product.description}}" fix-length="true"></long-description>
+                <div class="row">
+                  <div class="col col-50">
+                    <span class="description-line">{{ 'CARTS_QYT' | translate }}: <b class="product-quantity">{{product.qty}}</b></span>
+                  </div>
+                  <div class="col quantity-input-col">
+                    <number-input ng-model="product.qty"></number-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-divider product-footer">
+            <div class="row">
+              <div class="col">
+                <span class="shipping-text">{{ 'STD_SHIPPING' | translate }}</span>
+                <span class="shipping-text">{{ 'SHPMT_DAYS' | translate }}</span>
+              </div>
+              <div class="col col-center">
+                <span class="order-total" style="color: #c2d61e;">{{ product.price_currency }} {{product.price_amount * product.qty | number:2}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="checkout-footer">
+    <a class="button button-full checkout-button" ui-sref="main.app.checkout()" ng-disabled="!products.length">
+      <span>{{ 'CARTS_CHECKOUT' | translate }}</span>
+    </a>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,9 @@
+
+$subtitle_font_color: white;
+
+$regions_store_count_color: #4a4a4a;
+$regions_name_color: white;
+$regions_mask_color: #d8d8d8;
+
+$region-little-image-ratio: 3 2;
+$pre-img-ratios: append($pre-img-ratios, $region-little-image-ratio);

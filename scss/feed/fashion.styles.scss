@@ -1,0 +1,108 @@
+.feed-fashion-view
+{
+	.products-row
+	{
+		padding: 5px;
+		margin: 0px;
+		background-color: $fashion-bg;
+
+		@include flex-wrap(wrap);
+
+		.fashion-product-container
+		{
+			padding: 1px;
+
+			&:last-child,
+			&:nth-last-child(2)
+			{
+				// margin-bottom: 0px;
+			}
+
+			.product-anchor
+			{
+				text-decoration: none;
+			}
+
+			.card
+			{
+				margin: 5px;
+				border-radius: 0px;
+				box-shadow: none;
+
+				.product-image-wrapper
+				{
+					.pre-img
+					{
+						border-radius: 0px;
+					}
+
+					.product-image
+					{
+						width: 100%;
+					}
+				}
+
+				.product-description-wrapper
+				{
+					background-color: $fashion-product-card-bg;
+					padding: 5px;
+					text-align: center;
+
+					.product-title
+					{
+						margin: 0px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						font-size: 0.9em;
+						font-weight: normal;
+
+						a
+						{
+							color: #77626a;
+						}
+					}
+
+					.product-description
+					{
+						color: $fashion-product-card-color;
+						font-size: 0.7em;
+						margin: 2px 0px 0px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+
+						.actual-price
+						{
+							font-size: 1.1em;
+							letter-spacing: -0.1px;
+							text-align: center;
+							font-weight: 500;
+							color: $pink;
+						}
+
+						.previous-price
+						{
+							text-decoration: line-through;
+							font-size: 0.9em;
+							float: right;
+							clear: right;
+							margin-top: 2px;
+						}
+					}
+				}
+
+				.item
+				{
+					border: none;
+
+					&:first-child,
+					&:last-child
+					{
+						border-radius: 0px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<ion-view class="checkout-card-view" >
+  <ion-header-bar class="checkout-card-header">
+    <div class="buttons">
+      <button class="button button-clear cancel-button" ng-click="cancel()">{{ 'CHECKOUT_CANCEL' | translate }}</button>
+    </div>
+    <h1 class="title">{{ 'CHECKOUT_CARD' | translate }}</h1>
+  </ion-header-bar>
+
+  <ion-content class="checkout-card-content" has-bouncing="false">
+    <div class="row everything-else-row">
+      <div class="col">
+        <div ng-if="user_credit_cards.length == 0">
+          <div class="new-card-button-outer">
+            <button class="button button-block new-card-button" ng-click="showNewCardPopup()">
+              {{ 'CHECKOUT_NEWCARD' | translate }}
+            </button>
+          </div>
+        </div>
+        <div ng-if="user_credit_cards.length > 0">
+          <h3 class="credit-card-title">{{ 'CHECKOUT_SELECTCARD' | translate }}</h3>
+          <div class="card-chooser" ng-click="openCardsPopover($event)">
+            <button class="button button-block icon-right cards-popover-button" ng-class="{'ion-chevron-up': cards_popover.isShown(), 'ion-chevron-down' : !cards_popover.isShown()}">
+              {{data.selected_card.number || 'Select Credit Card'}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row actions-row">
+      <div class="col">
+        <a class="button button-full action-button" ng-click="saveSelectedCreditCard(data.selected_card)">{{ 'CHECKOUT_SAVECARD' | translate }}</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

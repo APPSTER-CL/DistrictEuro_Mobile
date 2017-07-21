@@ -1,0 +1,54 @@
+<ion-view class="signup-view auth-view" >
+  <ion-header-bar class="learn-header" style="background-color:#F8F8F8; background-image:none">
+    <div class="buttons">
+      <button class="button button-clear skip-button" style="color:#4A4A4A;position: absolute;right: 10px;" ng-click="skipIntro()">{{'RESUME_TUTORIAL' | translate}}</button>
+    </div>
+  </ion-header-bar>
+  <ion-content has-bouncing="false">
+    <div class="row form-row">
+      <div class="col">
+        <span class="form-divider">{{ 'SIGNUP_WITH' | translate }}</span>
+        <div class="row row-center social-networks">
+          <div class="col col-center" ng-click="doFacebookSignUp()">
+            <img ng-src="./img/auth/ic_facebook.png">
+            <span>{{ 'FACEBOOK' | translate }}</span>
+          </div>
+          <div class="col col-center" ng-click="doFacebookSignUp()">
+            <img ng-src="./img/auth/ic_qq.png">
+            <span>{{ 'WEBQQ' | translate }}</span>
+          </div>
+          <div class="col col-center" ng-click="doFacebookSignUp()">
+            <img ng-src="./img/auth/ic_wechat.png">
+            <span>{{ 'WECHAT' | translate }}</span>
+          </div>
+          <div class="col col-center" ng-click="doFacebookSignUp()">
+            <img ng-src="./img/auth/ic_weibo.png">
+            <span>{{ 'WEIBO' | translate }}</span>
+          </div>
+        </div>
+        <span class="form-divider">or</span>
+        <form name="signup_form" class="form-container" novalidate>
+          <div class="input-list list list-inset">
+            <label class="item item-input">
+              <input type="text" placeholder="{{ 'SIGNUP_NAME' | translate }}" name="name" ng-model="user.name" required>
+            </label>
+            <label class="item item-input">
+              <input type="text" placeholder="{{ 'SIGNUP_EMAIL' | translate }}" name="email" ng-model="user.email" required>
+            </label>
+            <label class="item item-input" show-hide-container>
+              <input type="password" placeholder="{{ 'SIGNUP_PASSWORD' | translate }}" name="password" ng-model="user.password" required show-hide-input>
+            </label>
+          </div>
+          <p ng-show="error" class="message error">{{error}}</p>
+          <button type="submit" class="button button-block auth-action-button" ng-click="doSignUp()" ng-disabled="signup_form.$invalid">
+            {{ 'SIGNUP_BUTTON' | translate}}
+          </button>
+        </form>
+        <div class="alternative-actions">
+          <a class="action-link button button-small button-clear" ng-click="showTerms()">{{ 'SIGNUP_TERMS' | translate }}</a>
+          <a class="action-link button button-small button-clear" ng-click="showPrivacyPolicy()">{{ 'SIGNUP_PRIVACY_POLICY' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

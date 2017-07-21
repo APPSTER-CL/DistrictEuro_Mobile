@@ -1,0 +1,39 @@
+<ion-view class="account-orders-view account-sub-view feed-view" view-title="My Orders" cache-view="false">
+  <ion-header-bar class="fashion-content-header feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <h1 class="title">{{ 'ORDERS_TITLE' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="orders-row">
+      <div class="card order-item" ng-repeat="order in orders">
+        <div class="item item-divider order-header">
+          <span class="header-title">{{order.date | amDateFormat:'DD MMM, YYYY'}}</span>
+          <span ng-if="order.status=='shipped'" style="margin-left:20%; font-size=17px; line-height:0px;">{{ 'ORDERS_SHIPPED' | translate }}</span>
+          <span ng-if="order.status=='delivered'" style="margin-left:20%; font-size=17px; line-height:0px;">{{ 'ORDERS_DELIVERED' | translate }}</span>
+          <span ng-if="order.status=='canceled'" style="margin-left:20%; font-size=17px; line-height:0px;">{{ 'ORDERS_RETURNED' | translate }}</span>
+
+          <i ng-if="order.status=='shipped'" class="order-icon icon-shipped"></i>
+          <i ng-if="order.status=='delivered'" class="order-icon icon-delivered"></i>
+          <i ng-if="order.status=='canceled'" class="order-icon icon-cancelled"></i>
+        </div>
+        <div class="item item-text-wrap order-content">
+          <div class="row order-product" ng-repeat="product in order.products track by $index">
+            <div class="col col-20 product-image-col">
+              <pre-img ratio="_1_1">
+                <img class="product-image-container" style="max-width: 100%;" ng-src="{{product.image.portrait_url}}" spinner-on-load/>
+              </pre-img>
+            </div>
+            <div class="col col-center name-col">
+              <span class="product-name">{{product.name}}</span>
+            </div>
+            <div class="col col-center">
+              <span class="product-price">{{product.price_currency}} {{product.price_amount}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

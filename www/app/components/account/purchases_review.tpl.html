@@ -1,0 +1,37 @@
+<ion-view class="account-orders-view account-sub-view feed-view" view-title="Review my purchases">
+  <ion-header-bar class="fashion-content-header feed-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <h1 class="title">{{ 'PROFILE_REVIEWPURCHASE' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="orders-row">
+      <div class="card order-item" ng-repeat="purchase in purchases">
+        <div class="item item-divider order-header">
+          <span class="header-title">{{purchase.purchase_date | amDateFormat:'DD MMM, YYYY'}}</span>
+        </div>
+        <div class="item item-text-wrap order-content">
+          <div class="row order-product">
+            <div class="col col-20 product-image-col">
+              <pre-img ratio="_1_1">
+                <img class="product-image-container" style="max-width: 100%;" ng-src="{{purchase.product.image.portrait_url}}" spinner-on-load/>
+              </pre-img>
+            </div>
+            <div class="col col-center name-col">
+              <span class="product-name">{{purchase.product.name}}</span>
+            </div>
+            <div class="col col-center">
+              <span class="product-price">{{purchase.product.price_currency}} {{purchase.product.price_amount}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="item item-divider order-footer" style="background-color:#C9C9C9; cursor:pointer !important" ui-sref="main.app.account.purchases_review.review({product_id:purchase.product_id})">
+          <span class="status-title">
+            <a style="text-decoration:none; color:#F7F7F7;">{{ 'REVIEW_PRODUCT' | translate }}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

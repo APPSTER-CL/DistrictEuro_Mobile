@@ -1,0 +1,38 @@
+<ion-view class="feed-view" >
+  <ion-header-bar class="feed-header">
+    <div class="logo-container" ng-hide="searchActive && searchEnable">
+      <img ng-src="./img/icons/logo.png"/>
+    </div>
+    <div class="search-bar" ng-class="{'active': searchActive }" ng-show="searchEnable" style="margin-right: 25px;">
+      <form action="." ng-submit="searchProducts($event)">
+        <input ng-model="searchQuery" type="search" id="searchProductInput" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}">
+      </form>
+      <img ng-src="./img/icons/search_nop.svg" ng-click="openSearch()"/>
+      <img ng-src="./img/icons/search-close.svg" ng-click="cancelSearch()"/>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear" ui-sref="main.app.filters()" ng-show="searchEnable">
+        <img class="logo-image" ng-src="./img/icons/filter_nop.svg"/>
+      </button>
+      <button class="button button-clear" ui-sref="main.app.carts.try-cart()">
+        <span class="badge try-cart-badge">{{getProductsInTryCart()}}</span>
+        <img class="logo-image" ng-src="./img/icons/try_on_nop.svg" style="height: 19px;"/>
+      </button>
+      <button class="button button-clear" ui-sref="main.app.carts()">
+        <img class="logo-image" ng-src="./img/icons/cart_nop.svg"/>
+        <span class="badge cart-badge">{{getProductsInCart()}}</span>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="categories-feeds-content district-top-nav" has-bouncing="true" delegate-handle="feeds-content" scroll="false">
+    <ion-tabs class="tabs-top tabs" style="padding: 0 5px;">
+      <ion-tab title="{{ 'HOME_TAB_PRODUCTS' | translate }}" ui-sref="main.app.feed.fashion" class="tab-left">
+        <ion-nav-view name="main.app.feed.fashion"></ion-nav-view>
+      </ion-tab>
+      <ion-tab title="{{ 'HOME_TAB_EXPLORE' | translate }}" ui-sref="main.app.feed.travel" class="tab-right">
+        <ion-nav-view name="main.app.feed.travel"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+    <ion-nav-view name="category-feed" class="category-feed"></ion-nav-view>
+  </ion-content>
+</ion-view>

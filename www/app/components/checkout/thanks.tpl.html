@@ -1,0 +1,23 @@
+<!-- main.app.feed.fashion -->
+<ion-view class="checkout-thanks-view" >
+  <ion-header-bar class="checkout-thanks-header">
+    <h1 class="title">{{ 'CARTS_CHECKOUT' | translate }}</h1>
+  </ion-header-bar>
+  <ion-content has-bouncing="false" class="checkout-thanks-content">
+    <div class="row row-center thanks-row">
+      <div class="col">
+        <h3 class="thanks-title">{{ main_text_key | translate }}</h3>
+        <div class="illustration-container">
+          <pre-img ratio="_41_22">
+            <img class="illustration-image" ng-src="{{image}}" spinner-on-load/>
+          </pre-img>
+        </div>
+        <div class="ok-button-outer">
+          <a class="button button-block ok-button" ui-sref="{{next_state}}">
+            {{ 'CHECKOUT_GREAT' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

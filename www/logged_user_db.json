@@ -1,0 +1,278 @@
+{
+  "user":{
+    "id": 1,
+    "first_name": "Zhang",
+    "last_name": "Wei",
+    "password": "asapadmin",
+    "email": "consumer@asap.uy",
+    "picture": "./img/common/128.jpg",
+    "orders": [
+      {
+        "id": 1,
+        "products": [
+          {
+            "id": "18"
+          }
+        ],
+        "date": "07/07/2016",
+        "status": "delivered"
+      },
+      {
+        "id": 2,
+        "products": [
+          {
+            "id": "22"
+          },
+          {
+            "id": "19"
+          }
+        ],
+        "date": "09/19/2016",
+        "status": "shipped"
+      },
+      {
+        "id": 3,
+        "products": [
+          {
+            "id": "24"
+          },
+          {
+            "id": "20"
+          },
+          {
+            "id": "31"
+          }
+        ],
+        "date": "05/20/2016",
+        "status": "canceled"
+      }
+    ],
+    "shipping_addresses": [
+      {
+        "full_name": "Zhang Wei",
+        "street": "3012号 Liu Xiang Gong",
+        "city": "Jiading Qu",
+        "state": "Shanghai Shi",
+        "postal_code": "77020",
+        "phone": "00-(886)-12-2334"
+      },
+      {
+        "full_name": "Li Wei",
+        "street": "號, No. 9, Xinsheng N Rd",
+        "city": "Zhongshan District",
+        "state": "Taipei City",
+        "postal_code": "11210",
+        "phone": "00-(886)-12-2323"
+      }
+    ],
+    "credit_cards": [
+      {
+        "full_name": "Billy Fowler",
+        "number": "**** **** **** 4295",
+        "type": "VISA",
+        "ccv": 556,
+        "expiration": "11/18/2016"
+      }
+    ],
+    "showrooms": [
+      {
+        "id": 1,
+        "name": "Showroom A",
+        "address": "63 RENMIN LU, QINGDAO SHI",
+        "city": "266033 SHANDONG CHINA",
+        "has_events": false,
+        "has_appointments": true,
+        "latitude": 36.106629,
+        "longitude": 120.358974,
+        "appointments": [
+
+          {
+            "date": "Monday Oct 23",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "Monday Nov 10",
+            "hour": "2:00pm"
+          }
+        ],
+        "appointmentsSpanish": [
+
+          {
+            "date": "Monday Oct 23",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "Monday Nov 10",
+            "hour": "2:00pm"
+          }
+        ],
+        "appointmentsChinese": [
+
+          {
+            "date": "10月23日星期一",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "11月10日星期一",
+            "hour": "2:00pm"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Showroom B",
+        "address": "63 RENMIN LU, QINGDAO SHI",
+        "city": "266033 SHANDONG CHINA",
+        "has_events": true,
+        "has_appointments": false,
+        "latitude": 36.106629,
+        "longitude": 120.358974,
+        "events": [
+          {
+            "title": "Italian wine tasting",
+            "description": "Come to our Showroom to taste some of the finest wines from Italy",
+            "date": "2 Jul"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Showroom C",
+        "address": "63 RENMIN LU, QINGDAO SHI",
+        "city": "266033 SHANDONG CHINA",
+        "has_events": true,
+        "has_appointments": true,
+        "latitude": 36.106629,
+        "longitude": 120.358974,
+        "events": [
+          {
+            "title": "Italian wine tasting",
+            "description": "Come to our Showroom to taste some of the finest wines from Italy",
+            "date": "2 Jul"
+          }
+        ],
+        "appointments": [
+          {
+            "date": "Monday Oct 23",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "Monday Nov 10",
+            "hour": "2:00pm"
+          }
+        ],
+        "appointmentsSpanish": [
+
+          {
+            "date": "Lunes 23 Oct",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "Lunes 10 Nov",
+            "hour": "2:00pm"
+          }
+        ],
+        "appointmentsChinese": [
+
+          {
+            "date": "10月23日星期一",
+            "hour": "4:00pm"
+          },
+          {
+            "date": "11月10日星期一",
+            "hour": "2:00pm"
+          }
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "product_id": 18,
+        "rating": 4,
+        "user": " Zhang Xiu Ying",
+        "comment": "Very good product!"
+
+      },
+      {
+        "id": 2,
+        "product_id": 18,
+        "rating": 3,
+        "user": "Zhang Li ",
+        "comment": "Normal, nothing outstanding."
+
+      },
+      {
+
+        "id": 3,
+        "product_id": 18,
+        "rating": 5,
+        "user": "Wang Xiu Ying",
+        "comment": "Sublime. Best of the best!"
+
+      },
+      {
+        "id": 4,
+        "product_id": 19,
+        "rating": 4,
+        "user": "Li Qiang",
+        "comment": "Very good product!"
+
+      },
+      {
+        "id": 5,
+        "product_id": 19,
+        "rating": 3,
+        "user": "Zhang Wei",
+        "comment": "Normal, nothing outstanding."
+
+      },
+      {
+
+        "id": 6,
+        "product_id": 19,
+        "rating": 2,
+        "user": "Li Yang",
+        "comment": "Not so good, but nice store."
+
+      }
+    ],
+    "purchases": [
+      {
+        "product_id": "18",
+        "product": {},
+        "purchase_date": "07/07/2016"
+      }
+    ],
+    "points": {
+      "total_points": "256",
+      "actions": [
+        {
+          "description": "items purchased",
+          "items":"3",
+          "points": "75"
+        },
+        {
+          "description": "items reviewed",
+          "items":"3",
+          "points": "25"
+        },
+        {
+          "description": "items purchased",
+          "items":"5",
+          "points": "125"
+        },
+        {
+          "description": "items reviewed",
+          "items":"4",
+          "points": "31"
+        }
+      ]
+    },
+    "stores": [
+      {"id": "1"},
+      {"id": "2"},
+      {"id": "3"}
+    ]
+  }
+}

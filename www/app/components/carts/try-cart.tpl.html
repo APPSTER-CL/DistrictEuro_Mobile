@@ -1,0 +1,52 @@
+<ion-view class="shopping-cart-view" cache-view="false">
+  <ion-content class="shopping-cart-content has-footer subtitle-colors" has-bouncing="false">
+    <div class="row row-center empty-cart-row" ng-if="!products.length">
+      <div class="col">
+        <h3 class="no-products-title">{{ 'CARTS_EMPTY' | translate }}</h3>
+        <div class="illustration-container">
+          <pre-img ratio="_34_25">
+            <img class="illustration-image" ng-src="./img/icons/cart-empty.png" spinner-on-load/>
+          </pre-img>
+        </div>
+      </div>
+    </div>
+    <div ng-if="products.length > 0">
+      <div class="row subtitle-container grey">
+        <div class="col">
+          <h3>{{ products.length }} {{ products.length === 1 ? 'item' : 'items' }} {{ 'CARTS_INCART' | translate }}</h3>
+        </div>
+      </div>
+      <div class="products-in-cart-row">
+        <div class="card product-in-cart" ng-repeat="product in products">
+          <div class="item item-divider product-header">
+            <div class="row">
+              <div class="col col-center">
+                <span class="product-name">{{product.name}}</span>
+              </div>
+              <div class="col col-center">
+                <button class="button button-icon icon ion-close-round remove-button" ng-click="removeFromCart(product)"></button>
+              </div>
+            </div>
+          </div>
+          <div class="item item-text-wrap product-content">
+            <div class="row">
+              <div class="col col-33 product-image-col">
+                <div class="product-image-container" multi-bg="[product.image.small_url]"></div>
+              </div>
+              <div class="col col-center product-description-col">
+                <span class="description-line">{{ 'CARTS_DESC' | translate }}:
+                   <long-description text="{{product.description}}" length="60" fix-length="true" show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}"></long-description>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="checkout-footer">
+    <a class="button button-full checkout-button" ng-click="scheduleAppointment()" ng-disabled="!products.length">
+      <span>{{ 'SCHEDULE_APPOINTMENT' | translate }}</span>
+    </a>
+  </ion-footer-bar>
+</ion-view>

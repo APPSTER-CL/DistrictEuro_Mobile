@@ -1,0 +1,42 @@
+.points-header {
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+  width: 50vw;
+  position: relative;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  * {
+    vertical-align: middle;
+  }
+
+  img {
+    height: 40px;
+  }
+
+  .points {
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  .subtext {
+    margin-top: 5px;
+    font-size: 1.1em;
+    line-height: 2;
+    font-weight: 300;
+  }
+
+  .redeem-button {
+    width: 100%;
+    background-color: $green;
+    color: $white;
+    font-size: 0.9em;
+    font-weight: 300;
+    min-height: initial;
+    line-height: 2;
+    margin-top: 10px;
+    border-radius: 0;
+  }
+}

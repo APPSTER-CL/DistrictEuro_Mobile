@@ -1,0 +1,11 @@
+<div class="large-description">
+  <div class="row">
+    <span class="col de-description">{{description}}</span>
+  </div>
+  <div class="row" ng-show="isTextLongEnough && !fixLength">
+    <div class="col de-description-toggle">
+      <a ng-click="toggle()" ng-show="!showingMore">{{showMoreText}}</a>
+      <a ng-click="toggle()" ng-show="showingMore">{{showLessText}}</a>
+    </div>
+  </div>
+</div>

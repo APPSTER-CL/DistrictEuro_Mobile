@@ -1,0 +1,49 @@
+<ion-view class="login-view auth-view" >
+  <ion-header-bar class="learn-header" style="background-color:#F8F8F8;">
+    <div class="buttons">
+      <button class="button button-clear skip-button" style="color:#4A4A4A;position: absolute;right: 10px;" ng-click="skipIntro()">{{'RESUME_TUTORIAL' | translate}}</button>
+    </div>
+  </ion-header-bar>
+  <ion-content has-bouncing="false">
+    <span class="form-divider">{{ 'LOGIN_WITH' | translate }}</span>
+    <div class="row row-center social-networks">
+      <div class="col col-center" ng-click="doFacebookLogIn()">
+        <img ng-src="./img/auth/ic_facebook.png">
+        <span>{{ 'FACEBOOK' | translate }}</span>
+      </div>
+      <div class="col col-center" ng-click="doFacebookLogIn()">
+        <img ng-src="./img/auth/ic_qq.png">
+        <span>{{ 'WEBQQ' | translate }}</span>
+      </div>
+      <div class="col col-center" ng-click="doFacebookLogIn()">
+        <img ng-src="./img/auth/ic_wechat.png">
+        <span>{{ 'WECHAT' | translate }}</span>
+      </div>
+      <div class="col col-center" ng-click="doFacebookLogIn()">
+        <img ng-src="./img/auth/ic_weibo.png">
+        <span>{{ 'WEIBO' | translate }}</span>
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col">
+        <span class="form-divider">{{ 'OR' | translate }}</span>
+        <form name="login_form" class="form-container" novalidate>
+          <div class="input-list list list-inset">
+            <label class="item item-input">
+              <input type="text" placeholder="{{ 'LOGIN_EMAIL' | translate }}" name="email" ng-model="user.email" required>
+            </label>
+            <label class="item item-input" show-hide-container>
+              <input type="password" placeholder="{{ 'LOGIN_PASSWORD' | translate }}" name="password" ng-model="user.password" required show-hide-input>
+            </label>
+          </div>
+          <p ng-show="error" class="message error">{{error}}</p>
+          <button type="submit" class="button button-block auth-action-button" ng-click="doLogIn()" ng-disabled="login_form.$invalid">{{ 'LOGIN_LOGINBUTTON' | translate }}</button>
+        </form>
+        <div class="alternative-actions">
+          <a class="action-link button button-small button-clear" ui-sref="intro.auth-forgot-password()">{{ 'LOGIN_FORGETPASSWORD' | translate }}</a>
+          <a class="action-link button button-small button-clear" ui-sref="intro.auth-signup()">{{ 'LOGIN_SIGNUPBUTTON' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

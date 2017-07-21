@@ -1,0 +1,86 @@
+
+.store-content {
+  .store-media {
+    &>img:first-child {
+      right: 15px;
+    }
+    &>img:nth-child(2) {
+      right: 45px;
+    }
+    &>img {
+      position: absolute;
+      z-index: 100;
+      right: 5%;
+      top: 15px;
+    }
+
+    // Styles when icons are selected.
+    &>img.active:first-child {
+      right: 10px;
+    }
+    &>img.active:nth-child(2) {
+      right: 40px;
+    }
+    &>img.active {
+      background-color: $pink;
+      padding: 5px;
+      top: 10px;
+      border-radius: 20px;
+    }
+
+    ion-slides {
+      z-index: 99;
+
+      .box {
+        height: 100%;
+      }
+    }
+  }
+
+
+  .store-basic-info {
+    margin: 12px 5px;
+
+    .row {
+      .col {
+        padding: 0;
+      }
+    }
+
+    img.store-logo {
+       border-radius: 50%;
+       height: 45px;
+       max-width: 45px;
+    }
+
+    .chat {
+      text-align: center;
+      img {
+        height: 20px;
+      }
+      .contact-us {
+        font-size: 0.6em;
+        font-weight: 300;
+        color: $pink;
+      }
+
+    }
+
+    h3 {
+      color: #4a4a4a;
+      font-weight: 300;
+      font-size: 1.5em;
+      letter-spacing: -0.8px;
+    }
+  }
+
+  .store-extra-info {
+    padding-bottom: 0;
+    margin-bottom: 5vw;
+    .col {
+      padding-bottom: 5vw;
+      max-width: 80vw;
+      margin: auto;
+    }
+  }
+}

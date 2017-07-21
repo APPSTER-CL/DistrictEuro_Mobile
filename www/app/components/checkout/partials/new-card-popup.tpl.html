@@ -1,0 +1,25 @@
+<div class="card-details-container">
+  <i class="ion-ios-close-outline popupclose" ng-click="closeCreditCardPopup()"></i>
+  <div class="row">
+    <label class="col item item-input item-stacked-label">
+      <span class="input-label">{{ 'CARD_NUMBER' | translate }}</span>
+      <input class="input-data" type="text" placeholder="Required">
+    </label>
+  </div>
+  <div class="row">
+    <label class="col item item-input item-stacked-label">
+      <span class="input-label">{{ 'CARD_NAME' | translate }}</span>
+      <input class="input-data" type="text" placeholder="Required">
+    </label>
+  </div>
+  <div class="row">
+    <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">{{ 'CARD_EXPIRATION' | translate }}</span>
+      <input class="input-data" type="text" placeholder="mm/yy">
+    </label>
+    <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">{{ 'CARD_CCV' | translate }}</span>
+      <input class="input-data" type="text" placeholder="Required">
+    </label>
+  </div>
+</div>

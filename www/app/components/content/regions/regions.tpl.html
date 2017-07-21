@@ -1,0 +1,44 @@
+<ion-view class="food-content-view">
+  <ion-header-bar class="food-content-header">
+    <button class="button button-clear back-button" ng-click="goBack()">
+      <img ng-src="./img/icons/left-arrow.svg"/>
+    </button>
+    <div class="title">
+      <img ng-src="./img/icons/logo_word_zh.png"/>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row address-map-row">
+      <div class="col">
+        <div class="map-wrapper" data-tap-disabled="true">
+          <map center="{{region.latitude}},{{region.longitude}}" zoom="15" map-type-control="false" street-view-control="false" zoom-control="true" zoom-control-options="{style:'MEDIUM'}">
+            <marker position="{{region.latitude}},{{region.longitude}}" title="{{ region.address }}" visible="true"></marker>
+          </map>
+        </div>
+      </div>
+    </div>
+    <div class="row country-basic-info margin-top">
+      <div class="col">
+        <h2>{{region.name}}</h2>
+        <long-description show-more-text="{{ 'SHOW_MORE' | translate }}" show-less-text="{{ 'SHOW_LESS' | translate }}" text="{{region.description}}" length="140"></long-description>
+      </div>
+    </div>
+    <div ng-repeat="store in region.stores" ui-sref="main.app.feed.travel.content.store_detail({storeId: store.id})">
+      <div class="image-card">
+        <pre-img ratio="_2_1" class="with-gradient">
+          <img ng-src="{{store.images[0].landscape_url}}" spinner-on-load  style="object-fit: cover;height: 200px;width: 100%; text-align: center;">
+        </pre-img>
+        <div class="image-card-data row row-center">
+          <span class="col col-20" style="text-align:center;">
+            <img class="product-image-container" style="position: static; vertical-align: middle; border-radius: 50%;width: 50px;height: 50px;" ng-src="{{store.logo.small_url}}"/>
+          </span>
+          <div class="col col-67">
+            <div class="image-card-data-title text-overflow-container">{{ store.name }}</div>
+            <div class="image-card-data-description text-overflow-container">{{ store.getDescription()}}</div>
+          </div>
+          <img class="col col-right col-10" ng-src="./img/icons/icArrowRight.svg" style="height: 32px;"/>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

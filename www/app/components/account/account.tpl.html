@@ -1,0 +1,94 @@
+<ion-view class="feed-view">
+  <ion-header-bar class="feed-header">
+    <div class="logo-container" ng-hide="searchActive && searchEnable">
+      <img ng-src="./img/icons/logo.png"/>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear" ui-sref="main.app.carts.try-cart()">
+        <img class="logo-image" ng-src="./img/icons/try_on_nop.svg" style="height: 19px;"/>
+        <span class="badge try-cart-badge">{{getProductsInTryCart()}}</span>
+      </button>
+      <button class="button button-clear" ui-sref="main.app.carts()">
+        <img class="logo-image" ng-src="./img/icons/cart_nop.svg"/>
+        <span class="badge cart-badge">{{getProductsInCart()}}</span>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="checkout-content">
+    <div class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.profile" style="text-align:left">{{ 'PROFILE_PERSONALINFO' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.purchases_review" style="text-align:left">{{ 'PROFILE_REVIEWPURCHASE' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.orders" style="text-align:left">{{ 'PROFILE_ORDERS' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.my_appointment" style="text-align:left">{{ 'PROFILE_APPOINTMENTS' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div ng-show="false" class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.my_stores" style="text-align:left">{{ 'PROFILE_FAVORITESTORES' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row address-row">
+      <div class="col">
+        <div class="address-chooser">
+          <a class="button button-block icon-right ion-chevron-right choose-addresses-button bb" ui-sref="main.app.account.my_points" style="text-align:left">{{ 'PROFILE_POINTS' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="list account-divider" style="margin-bottom: 0px;">
+      <div class="item item-divider"></div>
+    </div>
+    <!--<div class="row invite-and-rate-row">
+      <div class="col">
+        <button class="button button-block invite-friends-button">Invite Friends</button>
+        <button class="button button-block button-clear rate-app-button">
+          <i class="icon ion-android-star"></i>
+          <span>Rate this app!</span>
+        </button>
+      </div>
+    </div>-->
+    <p class="row address-row button button-clear logout-button" ui-sref="intro.walkthrough-learn()" style="color:inherit; padding: 0 22px;">{{ 'TUTORIAL_TITLE' | translate }}</p>
+    <br/>
+    <p class="row address-row button button-clear logout-button" ng-click="logout()" style="color:inherit; padding: 0 22px;">{{ 'LOGOUT_TITLE' | translate }}</p>
+
+    <div class="row logout-terms-row" style="text-align: left">
+
+      <div class="col">
+        <div ng-if="false" class="row terms-row">
+          <div class="col col-35">
+            <a class="button button-clear button-small legal-stuff-button" style="color:inherit">Privacy Policy</a>
+          </div>
+          <div class="col col-40">
+            <a class="button button-clear button-small legal-stuff-button" style="color:inherit">Terms</a>
+          </div>
+          <div class="col col-25">
+            <a class="button button-clear button-small legal-stuff-button" style="color:inherit">FAQs</a>
+          </div>
+        </div>
+  </div>
+    </div>
+
+  </ion-content>
+</ion-view>

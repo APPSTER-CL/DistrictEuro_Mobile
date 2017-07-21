@@ -1,0 +1,26 @@
+.showroom-title {
+  color: #9b9b9b;
+}
+
+.appointment-entry {
+  span {
+    margin-left: 5vw;
+    font-size: 0.9em;
+    color: $light-grey;
+  }
+  img {
+    float: right;
+    height: 24px;
+  }
+}
+
+.event-description {
+  padding: 5vw;
+  font-size: 0.8em;
+  color: $light-grey;
+
+  ul {
+    list-style: initial;
+    padding-left: 40px;
+  }
+}

@@ -1,0 +1,65 @@
+<ion-view class="checkout-view" cache-view="false">
+  <ion-header-bar class="checkout-header">
+    <div class="buttons">
+      <button class="button button-clear cancel-button" ng-click="cancel()">{{ 'CHECKOUT_CANCEL' | translate }}</button>
+    </div>
+    <h1 align="left" class="title">{{ 'APPOINTMENT_TITLE' | translate }}</h1>
+  </ion-header-bar>
+  <form name="appointmentForm">
+    <ion-content has-bouncing="false" class="checkout-content">
+      <div class="row order-brief-row">
+        <div class="col col-67">
+          <div class="row illustration-row">
+            <div class="col">
+              <span class="order-brief-callout">{{products.length}}
+                {{ products.length === 1 ? 'item' : 'items' }}
+                {{ 'CHECKOUT_READY' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="checkout-sub-title">{{ 'APPOINTMENT_SHOWROOM' | translate }}</h3>
+      <div class="row address-row">
+        <div style="width:100%" class="address-chooser" ng-click="openAddressesPopover($event)">
+          <button class="button button-block icon-right addresses-popover-button choose-button" ng-class="{'ion-chevron-up': addresses_popover.isShown(), 'ion-chevron-down' : !addresses_popover.isShown()}">
+            {{data.selected_address || ('SELECT_SHOWROOM_DROPDOWN' | translate)}}
+          </button>
+          <input ng-model="data.selected_address" hidden="true" required>
+        </div>
+      </div>
+      <h3 class="checkout-sub-title">{{ 'APPOINTMENT_DATE' | translate }}</h3>
+      <div class="row address-row">
+        <label class="item item-input" style="width:100%" align="center">
+          <span class="input-label"></span>
+          <input type="date" ng-model="data.date" required>
+        </label>
+      </div>
+      <h3 class="checkout-sub-title">{{ 'APPOINTMENT_TIME' | translate }}</h3>
+      <div class="row address-row">
+        <label class="item item-input" style="width:100%" align="center">
+          <span class="input-label"></span>
+          <input style="background-color: white;" type="time" ng-model="data.time" ng-click="openTimePicker()" readonly required>
+        </label>
+      </div>
+
+      <h3 class="checkout-sub-title">{{ 'APPOINTMENT_YOUR_ITEMS' | translate  }}</h3>
+      <ul class="list checkout-products">
+        <li class="item checkout-product" ng-repeat="product in products">
+          <div class="row">
+            <div class="col col-20 product-image-col">
+              <div class="product-image-container" multi-bg="[product.image.small_url]"></div>
+            </div>
+            <div class="col col-50 col-center">
+              <span class="product-name">{{product.name}}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </ion-content>
+    <ion-footer-bar class="checkout-footer">
+      <a class="button button-full checkout-button" ng-click="createAppointment()" ng-disabled="appointmentForm.$invalid">
+        <span>{{ 'APPOINTMENT_CREATE' | translate }}</span>
+      </a>
+    </ion-footer-bar>
+  </form>
+</ion-view>

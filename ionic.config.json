@@ -1,0 +1,13 @@
+{
+  "name": "Oumimen",
+  "app_id": "3139d5fb",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

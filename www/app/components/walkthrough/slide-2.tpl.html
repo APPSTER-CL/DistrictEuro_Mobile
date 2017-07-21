@@ -1,0 +1,17 @@
+<div style="min-height:100%">
+    <div class="buttons" style="position: absolute; z-index: 1; right: 10px;">
+      <button class="button button-clear skip-button" style="color:#ffffff" ng-click="skipIntro()">{{ 'RESUME_TUTORIAL' | translate }}</button>
+    </div>
+    <pre-img ratio="_1_1" ng-if="language!='es-ES' && language!='zh-CN'">
+      <img class="illustration-image" ng-src="./img/walkthrough/tuto 2.jpg" spinner-on-load
+      style="object-fit: cover; width: 100%; height: 100%;">/>
+    </pre-img>
+    <pre-img ratio="_1_1"ng-if="language=='es-ES'">
+      <img class="illustration-image" ng-src="./img/walkthrough/tuto 2 es.jpg" spinner-on-load
+      style="object-fit: cover; width: 100%; height: 100%;">/>
+    </pre-img>
+    <pre-img ratio="_1_1"ng-if="language=='zh-CN'">
+      <img class="illustration-image" ng-src="./img/walkthrough/tuto 2 chi.jpg" spinner-on-load
+      style="object-fit: cover; width: 100%; height: 100%;">/>
+    </pre-img>
+</div>
